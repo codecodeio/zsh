@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Allow specific files
+!.zshrc        
+!.gitignore
+!README.md
