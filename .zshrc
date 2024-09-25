@@ -23,33 +23,27 @@ playgame() { "/Users/$USER/Documents/Development/zsh/games/"$1".sh"; }
 alias shells='cd /Users/$USER/Documents/Development/Shell && ll'
 play() { cd /Users/$USER/Documents/Development/Shell && bash play.sh $1 } #play ascii animation
 
-#Terminal
-alias zsh="code ~/.zshrc"
-alias refresh="source ~/.zshrc"
-alias ll='ls -FGlAhp'
-f() { open -a "Finder" $1 } #open directory in finder
-t() { open -a "Terminal" $1 } #open new terminal window
-findoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -ls } #$findoldfiles DAYS SEARCHTERM $findoldfiles 7 .gz
-deleteoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -delete }
-#Terminal Navigation
-alias home='cd ~ && pwd'
-docs() { cd /Users/$USER/Documents && ll }
-dev() { cd /Users/$USER/Documents/Development && ll }
-alias repos='cd /Users/$USER/Documents/Development/Git/repos && pwd && ll'
-repo() { 
-    if [[ "$1" == "zsh" ]]; then 
-        cd ~ 
-    else 
-        cd /Users/$USER/Documents/Development/Git/repos/"$1" 
-    fi 
-    ll 
-}
-
-#Visual Studio Code
+#Editor
 code() {open -a "Visual Studio Code" $1;} #open a file using VSC
 
-#Brew
-alias brewtaps='cd /usr/local/Homebrew/Library/Taps && ll'
+#Terminal
+alias zsh="code ~/.zshrc"
+alias zshp="code ~/.zprofile" #open zsh profile
+alias refresh="source ~/.zshrc"
+alias ll='ls -FGlAhp'
+alias lsbysize='ls -lahS'
+f() { open -a "Finder" $1 } #open dir in finder
+t() { open -a "Terminal" $1 } #open dir in new terminal window
+findoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -ls } #$findoldfiles DAYS SEARCHTERM $findoldfiles 7 .gz
+deleteoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -delete }
+findfilesnotmatching() { find . ! -name "$1" -type f }
+deletefilesnotmatching() { find . ! -name "$1" -type f -exec rm {} + }
+alias findhere="mdfind $1 -onlyin ./"		# Search current directory using spotlight index
+#Terminal Navigation
+alias ..='cd ../' # Go back 1 directory level
+alias ...='cd ../../' # Go back 2 directory levels
+docs() { cd /Users/$USER/Documents && ll }
+dev() { cd /Users/$USER/Documents/Development && ll }
 
 #Networking
 alias hosts='code /etc/hosts'
@@ -76,6 +70,32 @@ alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
 alias gitpruneauto='git config remote.origin.prune true && git config -l'
 alias branchcleanref='git remote update origin --prune'
 alias branchlist='git branch -r'
+tagsearch() { git tag -l -n1 | grep $1 }
+alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag locally and remotely
+
+#GIT REPOS
+alias repos='cd /Users/$USER/Documents/Development/repos && ll'
+repo() { 
+    if [[ "$1" == "zsh" ]]; then 
+        cd ~ 
+    else 
+        cd /Users/$USER/Documents/Development/Git/repos/"$1" 
+    fi 
+    ll 
+}
+
+#GIT OPTIMIZATION
+alias gc='git gc --aggressive'
+#update the local list of remote git branches automatically every time we run git pull or git fetch
+alias gitpruneauto='git config remote.origin.prune true && git config -l'
+#Remove Local References to Remote Branches
+alias branchcleanref='git remote update origin --prune' #Update local list of remote branches
+alias branchlist='git branch -r' #list remote branches
+#Remove local GIT branches that were deleted on the remote repository
+branchcleanlist() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' }
+branchclean() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d }
+#clean everything
+alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
 
 #webp image format: webp filename.jpg || webp filename.jpg 70
 webp() {
@@ -83,3 +103,15 @@ webp() {
     local quality=${2:-80}
     cwebp -quiet -q $quality "$1" -o "${filename}-q${quality}.webp"
 }
+
+#iCloud
+alias icloud='cd "/Users/$USER/Library/Mobile Documents/com~apple~CloudDocs/Files" && ll'
+alias emails="code /Users/$USER/Library/Mobile\ Documents/com~apple~CloudDocs/Files/Notes/emails"
+
+#SSH
+alias sshconf='code ~/.ssh/config' #load ssh keys so you do not have to type passphrase
+alias sshsysconf='code /private/etc/ssh/ssh_config'
+
+#COMPOSER
+alias composerd='composer diagnose' #diagnose composer issues
+alias composercreds='cd ~/.composer && ll'
