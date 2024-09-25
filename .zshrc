@@ -74,7 +74,7 @@ tagsearch() { git tag -l -n1 | grep $1 }
 alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag locally and remotely
 
 #GIT REPOS
-alias repos='cd /Users/$USER/Documents/Development/repos && ll'
+alias repos='cd /Users/$USER/Documents/Development/Git/repos && ll'
 repo() { 
     if [[ "$1" == "zsh" ]]; then 
         cd ~ 
