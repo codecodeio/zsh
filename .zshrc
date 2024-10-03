@@ -28,7 +28,8 @@ code() {open -a "Visual Studio Code" $1;} #open a file using VSC
 
 #Terminal
 alias zsh="code ~/.zshrc"
-alias zshp="code ~/.zprofile" #open zsh profile
+alias zshp="code ~/.zprofile"
+alias zshw="code ~/.zshrcwork"
 alias refresh="source ~/.zshrc"
 alias ll='ls -FGlAhp'
 alias lsbysize='ls -lahS'
@@ -75,13 +76,13 @@ alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag l
 
 #GIT REPOS
 alias repos='cd /Users/$USER/Documents/Development/Git/repos && ll'
-repo() { 
-    if [[ "$1" == "zsh" ]]; then 
-        cd ~ 
-    else 
-        cd /Users/$USER/Documents/Development/Git/repos/"$1" 
-    fi 
-    ll 
+repo() {
+    if [[ "$1" == "zsh" ]]; then
+        cd ~
+    else
+        cd /Users/$USER/Documents/Development/Git/repos/"$1"
+    fi
+    ll
 }
 
 #GIT OPTIMIZATION
@@ -115,3 +116,8 @@ alias sshsysconf='code /private/etc/ssh/ssh_config'
 #COMPOSER
 alias composerd='composer diagnose' #diagnose composer issues
 alias composercreds='cd ~/.composer && ll'
+
+# Source the .zshrcwork file if it exists
+if [ -f ~/.zshrcwork ]; then
+  source ~/.zshrcwork
+fi
