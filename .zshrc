@@ -117,6 +117,12 @@ alias sshsysconf='code /private/etc/ssh/ssh_config'
 alias composerd='composer diagnose' #diagnose composer issues
 alias composercreds='cd ~/.composer && ll'
 
+#Docker
+#ssh into a named docker container easily
+function sshd() {
+    docker exec -it "$1" bash
+}
+
 # Source the .zshrcwork file if it exists
 if [ -f ~/.zshrcwork ]; then
   source ~/.zshrcwork
