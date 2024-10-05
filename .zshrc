@@ -117,7 +117,9 @@ alias sshsysconf='code /private/etc/ssh/ssh_config'
 alias composerd='composer diagnose' #diagnose composer issues
 alias composercreds='cd ~/.composer && ll'
 
-#Docker
+#DOCKER
+alias d='docker'
+alias dc='docker-compose'
 #ssh into a named docker container easily
 function sshd() {
     docker exec -it "$1" bash
