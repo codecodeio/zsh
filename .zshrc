@@ -121,8 +121,12 @@ alias composercreds='cd ~/.composer && ll'
 alias d='docker'
 alias dc='docker-compose'
 #ssh into a named docker container easily
-function sshd() {
-    docker exec -it "$1" bash
+function dssh() {
+    docker exec -it $1 bash
+}
+#ssh into a mysql docker container as root
+function dsql() {
+    docker exec -it $1 mysql -u root -prootpass
 }
 
 # Source the .zshrcwork file if it exists
