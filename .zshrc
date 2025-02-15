@@ -45,6 +45,7 @@ alias ..='cd ../' # Go back 1 directory level
 alias ...='cd ../../' # Go back 2 directory levels
 docs() { cd /Users/$USER/Documents && ll }
 dev() { cd /Users/$USER/Documents/Development && ll }
+dl() { cd /Users/$USER/Downloads && ll }
 
 #Networking
 alias hosts='code /etc/hosts'
