@@ -40,12 +40,24 @@ deleteoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -delete }
 findfilesnotmatching() { find . ! -name "$1" -type f }
 deletefilesnotmatching() { find . ! -name "$1" -type f -exec rm {} + }
 alias findhere="mdfind $1 -onlyin ./"		# Search current directory using spotlight index
+del() {
+  if [ -d "$1" ]; then
+    rm -rf "$1"
+    echo "Directory '$1' and its contents have been deleted."
+  elif [ -f "$1" ]; then
+    rm "$1"
+    echo "File '$1' has been deleted."
+  else
+    echo "Error: '$1' is not a valid file or directory."
+  fi
+}
 #Terminal Navigation
 alias ..='cd ../' # Go back 1 directory level
 alias ...='cd ../../' # Go back 2 directory levels
 docs() { cd /Users/$USER/Documents && ll }
 dev() { cd /Users/$USER/Documents/Development && ll }
 dl() { cd /Users/$USER/Downloads && ll }
+me() { cd ~ && ll }
 
 #Networking
 alias hosts='code /etc/hosts'
@@ -129,6 +141,9 @@ function dssh() {
 function dsql() {
     docker exec -it $1 mysql -u root -prootpass
 }
+
+#ollama
+#ollama run deepseek-r1:7b
 
 # Source the .zshrcwork file if it exists
 if [ -f ~/.zshrcwork ]; then
