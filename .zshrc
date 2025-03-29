@@ -43,12 +43,12 @@ alias findhere="mdfind $1 -onlyin ./"		# Search current directory using spotligh
 del() {
   if [ -d "$1" ]; then
     rm -rf "$1"
-    echo "Directory '$1' and its contents have been deleted."
+    echo ""✅ Directory '$1' and its contents have been deleted."
   elif [ -f "$1" ]; then
     rm "$1"
-    echo "File '$1' has been deleted."
+    echo ""✅ File '$1' has been deleted."
   else
-    echo "Error: '$1' is not a valid file or directory."
+    echo "🚫 Error: '$1' is not a valid file or directory."
   fi
 }
 #Terminal Navigation
@@ -74,6 +74,7 @@ alias commit='git commit'
 alias fetch='git fetch'
 alias push='git push'
 alias pull='git pull'
+alias pullf="git pull --rebase --autostash" #auto stash and stash apply
 alias merge='git merge'
 alias stash='git stash'
 alias branch='git branch'
@@ -86,6 +87,26 @@ alias branchcleanref='git remote update origin --prune'
 alias branchlist='git branch -r'
 tagsearch() { git tag -l -n1 | grep $1 }
 alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag locally and remotely
+openrepo() {
+    # Get the remote URL from git config
+    REMOTE_URL=$(git config --get remote.origin.url)
+
+    if [[ $REMOTE_URL == git@github.com:* ]]; then
+        # Convert SSH URL to HTTPS URL
+        BROWSER_URL="https://github.com/${REMOTE_URL#git@github.com:}"
+        BROWSER_URL="${BROWSER_URL%.git}"
+    elif [[ $REMOTE_URL == https://github.com/* ]]; then
+        # If it's already HTTPS, just clean up any trailing .git
+        BROWSER_URL="${REMOTE_URL%.git}"
+    else
+        echo "❌ Not a valid GitHub URL."
+        return 1
+    fi
+
+    # Open the URL in the default browser
+    echo "🌐 Opening $BROWSER_URL"
+    open "$BROWSER_URL"
+}
 
 #GIT REPOS
 alias repos='cd /Users/$USER/Documents/Development/Git/repos && ll'
