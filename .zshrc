@@ -154,8 +154,12 @@ alias composercreds='cd ~/.composer && ll'
 #DOCKER
 alias d='docker'
 alias dc='docker-compose'
-#ssh into a named docker container easily
-function dssh() {
+#ssh into a named docker container easily using sh
+function dshell() {
+    docker exec -it $1 sh
+}
+#ssh into a named docker container easily using bash
+function dbash() {
     docker exec -it $1 bash
 }
 #ssh into a mysql docker container as root
