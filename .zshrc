@@ -88,6 +88,7 @@ alias branchcleanref='git remote update origin --prune'
 alias branchlist='git branch -r'
 tagsearch() { git tag -l -n1 | grep $1 }
 alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag locally and remotely
+alias gopen='code $(git diff --name-only)' #open files that have been changed in git
 openrepo() {
     # Get the remote URL from git config
     REMOTE_URL=$(git config --get remote.origin.url)
