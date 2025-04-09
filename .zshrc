@@ -28,6 +28,8 @@ play() { cd /Users/$USER/Documents/Development/Shell && bash play.sh $1 } #play 
 code() {open -a "Visual Studio Code" $1;} #open a file using VSC
 
 #Terminal
+#export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+export LSCOLORS="GxFxCxDxBxegedabagacad"
 alias zsh="code ~/.zshrc"
 alias zshp="code ~/.zprofile"
 alias zshw="code ~/.zshrcwork"
@@ -44,10 +46,10 @@ alias findhere="mdfind $1 -onlyin ./"		# Search current directory using spotligh
 del() {
   if [ -d "$1" ]; then
     rm -rf "$1"
-    echo ""✅ Directory '$1' and its contents have been deleted."
+    echo "✅ Directory '$1' and its contents have been deleted."
   elif [ -f "$1" ]; then
     rm "$1"
-    echo ""✅ File '$1' has been deleted."
+    echo "✅ File '$1' has been deleted."
   else
     echo "🚫 Error: '$1' is not a valid file or directory."
   fi
