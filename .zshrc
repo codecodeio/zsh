@@ -73,7 +73,14 @@ alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper
 alias checkout='git checkout'
 alias status='git status'
 alias add='git add'
-alias commit='git commit'
+commit() {
+  if [ $# -eq 0 ]; then
+    echo "❌ Error: Commit message required."
+    return 1
+  fi
+  git commit -m "$*"
+}
+
 alias fetch='git fetch'
 alias push='git push'
 alias pull='git pull'
