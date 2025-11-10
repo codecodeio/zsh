@@ -90,11 +90,6 @@ alias stash='git stash'
 alias branch='git branch'
 alias config='git config'
 alias tag='git tag'
-alias gc='git gc --aggressive'
-alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
-alias gitpruneauto='git config remote.origin.prune true && git config -l'
-alias branchcleanref='git remote update origin --prune'
-alias branchlist='git branch -r'
 tagsearch() { git tag -l -n1 | grep $1 }
 alias tagdel="git fetch && git tag -d $1 && git push origin -d $1" #delete tag locally and remotely
 alias gopen='code $(git diff --name-only)' #open files that have been changed in git
@@ -185,3 +180,26 @@ function dsql() {
 if [ -f ~/.zshrcwork ]; then
   source ~/.zshrcwork
 fi
+
+#mydiff
+# Diff two files, write a patch, open it in VS Code.
+mydiff() {
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: mydiff <file1> <file2> [out.patch]" >&2
+    return 2
+  fi
+
+  local f1="$1"
+  local f2="$2"
+  local out="${3:-$HOME/Downloads/diff-output.patch}"
+
+  # Run diff; treat exit code 1 (files differ) as success, but surface real errors (2).
+  ( diff -u "$f1" "$f2" > "$out" ) || [[ $? -eq 1 ]] || return 2
+
+  # Open with VS Code if available; otherwise fall back to macOS 'open'.
+  if command -v code >/dev/null 2>&1; then
+    code "$out"
+  else
+    open -a "Visual Studio Code" "$out"
+  fi
+}
