@@ -36,8 +36,9 @@ alias zshw="code ~/.zshrcwork"
 alias refresh="source ~/.zshrc"
 alias ll='ls -FGlAhp'
 alias lsbysize='ls -lahS'
-f() { open -a "Finder" $1 } #open dir in finder
-t() { open -a "Terminal" $1 } #open dir in new terminal window
+f() { open -a "Finder" $1 } #open dir in Finder
+t() { open -a "Terminal" $1 } #open dir in new Terminal window
+p() { open -a "Preview" $1 } #open file in Preview
 findoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -ls } #$findoldfiles DAYS SEARCHTERM $findoldfiles 7 .gz
 deleteoldfiles() {  find ./ -type f -mtime "+$1" -name "*$2*" -delete }
 findfilesnotmatching() { find . ! -name "$1" -type f }
@@ -60,6 +61,7 @@ alias ...='cd ../../' # Go back 2 directory levels
 docs() { cd /Users/$USER/Documents && ll }
 dev() { cd /Users/$USER/Documents/Development && ll }
 dl() { cd /Users/$USER/Downloads && ll }
+dt() { cd /Users/$USER/Desktop && ll }
 me() { cd ~ && ll }
 
 #Networking
@@ -203,3 +205,12 @@ mydiff() {
     open -a "Visual Studio Code" "$out"
   fi
 }
+
+
+# pnpm
+export PNPM_HOME="/Users/$USER/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
