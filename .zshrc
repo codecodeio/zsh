@@ -83,6 +83,7 @@ commit() {
   git commit -m "$*"
 }
 
+alias clone='git clone'
 alias fetch='git fetch'
 alias push='git push'
 alias pull='git pull'
@@ -205,7 +206,6 @@ mydiff() {
     open -a "Visual Studio Code" "$out"
   fi
 }
-
 
 # pnpm
 export PNPM_HOME="/Users/$USER/Library/pnpm"
