@@ -142,10 +142,15 @@ branchclean() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1
 alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
 
 #webp image format: webp filename.jpg || webp filename.jpg 70
-webp() {
+towebp() {
     local filename="${1%.*}"
     local quality=${2:-80}
     cwebp -quiet -q $quality "$1" -o "${filename}-q${quality}.webp"
+}
+#svg to png image format: svg filename.svg
+tosvg() {
+    local filename="${1%.*}"
+    rsvg-convert "$1" -o "${filename}.png"
 }
 
 #iCloud
