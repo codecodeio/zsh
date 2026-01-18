@@ -83,6 +83,7 @@ commit() {
   git commit -m "$*"
 }
 
+alias clone='git clone'
 alias fetch='git fetch'
 alias push='git push'
 alias pull='git pull'
@@ -144,7 +145,12 @@ alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
 towebp() {
     local filename="${1%.*}"
     local quality=${2:-80}
-    cwebp -quiet -q $quality "$1" -o "${filename}-q${quality}.webp"
+    cwebp -quiet -q $quality "$1" -o "${filename}.webp"
+}
+#svg to png image format: svg filename.svg
+tosvg() {
+    local filename="${1%.*}"
+    rsvg-convert "$1" -o "${filename}.png"
 }
 #svg to png image format: svg filename.svg
 tosvg() {
@@ -211,11 +217,3 @@ mydiff() {
   fi
 }
 
-
-# pnpm
-export PNPM_HOME="/Users/$USER/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
