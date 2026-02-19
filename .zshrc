@@ -33,7 +33,7 @@ export LSCOLORS="GxFxCxDxBxegedabagacad"
 alias zsh="code ~/.zshrc"
 alias zshp="code ~/.zprofile"
 alias zshw="code ~/.zshrcwork"
-alias refresh="source ~/.zshrc"
+alias refresh="source ~/.zshrc" && source ~/.zprofile
 alias ll='ls -FGlAhp'
 alias lsbysize='ls -lahS'
 f() { open -a "Finder" $1 } #open dir in Finder
@@ -63,6 +63,9 @@ dev() { cd /Users/$USER/Documents/Development && ll }
 dl() { cd /Users/$USER/Downloads && ll }
 dt() { cd /Users/$USER/Desktop && ll }
 me() { cd ~ && ll }
+notes() { code /Users/$USER/Documents/Development/notes.txt }
+alias icloud='cd "/Users/$USER/Library/Mobile Documents/com~apple~CloudDocs/Files" && ll'
+alias emails="code /Users/$USER/Library/Mobile\ Documents/com~apple~CloudDocs/Files/Notes/emails"
 
 #Networking
 alias hosts='code /etc/hosts'
@@ -152,10 +155,6 @@ tosvg() {
     local filename="${1%.*}"
     rsvg-convert "$1" -o "${filename}.png"
 }
-
-#iCloud
-alias icloud='cd "/Users/$USER/Library/Mobile Documents/com~apple~CloudDocs/Files" && ll'
-alias emails="code /Users/$USER/Library/Mobile\ Documents/com~apple~CloudDocs/Files/Notes/emails"
 
 #SSH
 alias sshconf='code ~/.ssh/config' #load ssh keys so you do not have to type passphrase
