@@ -122,6 +122,7 @@ openrepo() {
 
 #GIT REPOS
 alias repos='cd /Users/$USER/Documents/Development/Git/repos && ll'
+alias guru='cd /Users/$USER/Documents/Development/Git/repos/guru && git pull && claude'
 repo() {
     if [[ "$1" == "zsh" ]]; then
         cd ~
@@ -168,6 +169,10 @@ alias sshsysconf='code /private/etc/ssh/ssh_config'
 #COMPOSER
 alias composerd='composer diagnose' #diagnose composer issues
 alias composercreds='cd ~/.composer && ll'
+
+#BREW
+alias b='brew'
+alias bu='brew update && brew upgrade && brew cleanup && brew doctor' #update brew and all packages, then clean up old versions, and check for issues
 
 #DOCKER
 alias d='docker'
