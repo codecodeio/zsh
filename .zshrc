@@ -145,6 +145,15 @@ branchclean() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1
 #clean everything
 alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
 
+#IMAGE OPTIMIZATION
+#optimize png images using sips, which is built into macOS.
+pngopt() {
+  local input="$1"
+  local output="${input%.*}.jpg"
+  sips -s format jpeg -s formatOptions 70 -Z 2000 "$input" --out "$output" >/dev/null
+  echo "Saved: $output ($(du -h "$output" | cut -f1))"
+}
+
 #webp image format: webp filename.jpg || webp filename.jpg 70
 towebp() {
     local filename="${1%.*}"
