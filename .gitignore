@@ -3,6 +3,7 @@
 
 # Allow specific files
 !.zshrc
-!.zprofile  
+!.zprofile
 !.gitignore
 !README.md
+!CLAUDE.md
