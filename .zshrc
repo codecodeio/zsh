@@ -165,11 +165,6 @@ tosvg() {
     local filename="${1%.*}"
     rsvg-convert "$1" -o "${filename}.png"
 }
-#svg to png image format: svg filename.svg
-tosvg() {
-    local filename="${1%.*}"
-    rsvg-convert "$1" -o "${filename}.png"
-}
 
 #SSH
 alias sshconf='code ~/.ssh/config' #load ssh keys so you do not have to type passphrase
