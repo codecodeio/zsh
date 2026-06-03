@@ -202,6 +202,11 @@ if [ -f ~/.zshrcwork ]; then
   source ~/.zshrcwork
 fi
 
+# Source the magdev multi-site helpers (magup/magdown/maglist) if present
+if [ -f ~/Documents/Development/Git/repos/magdevedge/magdev-aliases.zsh ]; then
+  source ~/Documents/Development/Git/repos/magdevedge/magdev-aliases.zsh
+fi
+
 #mydiff
 # Diff two files, write a patch, open it in VS Code.
 mydiff() {
