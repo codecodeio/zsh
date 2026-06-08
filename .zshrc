@@ -143,7 +143,7 @@ alias branchlist='git branch -r' #list remote branches
 branchcleanlist() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' }
 branchclean() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d }
 #clean everything
-alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
+alias gitopt='gc && branchcleanref && { branchclean; gitpruneauto; }'
 
 #IMAGE OPTIMIZATION
 #optimize png images using sips, which is built into macOS.
