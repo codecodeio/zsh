@@ -214,6 +214,9 @@ function dsql() {
     docker exec -it $1 mysql -u root -prootpass
 }
 
+#Node version manager (evaluates node requirements in package.json and automatically switches to the correct node version when you cd into a project directory)
+eval "$(fnm env --use-on-cd)"
+
 #ollama
 #ollama run deepseek-r1:7b
 
