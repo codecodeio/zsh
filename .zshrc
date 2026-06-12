@@ -32,7 +32,6 @@ code() {open -a "Visual Studio Code" $1;} #open a file using VSC
 export LSCOLORS="GxFxCxDxBxegedabagacad"
 alias zsh="code ~/.zshrc"
 alias zshp="code ~/.zprofile"
-alias zshw="code ~/.zshrcwork"
 alias refresh="source ~/.zshrc" && source ~/.zprofile
 alias ll='ls -FGlAhp'
 alias lsbysize='ls -lahS'
@@ -203,11 +202,6 @@ eval "$(fnm env --use-on-cd)"
 
 #ollama
 #ollama run deepseek-r1:7b
-
-# Source the .zshrcwork file if it exists
-if [ -f ~/.zshrcwork ]; then
-  source ~/.zshrcwork
-fi
 
 
 #mydiff
