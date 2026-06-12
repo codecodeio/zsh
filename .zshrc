@@ -132,6 +132,10 @@ repo() {
     ll
 }
 
+
+# open the Claude skills folder in VS Code (each skill = <name>/SKILL.md)
+alias skills='code "/Users/$USER/.claude/skills"'
+
 #GIT OPTIMIZATION
 alias gc='git gc --aggressive'
 #update the local list of remote git branches automatically every time we run git pull or git fetch
@@ -143,7 +147,7 @@ alias branchlist='git branch -r' #list remote branches
 branchcleanlist() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' }
 branchclean() { git branch -vv | grep ': gone]'|  grep -v "\*" | awk '{ print $1; }' | xargs -r git branch -d }
 #clean everything
-alias gitopt='gc && branchcleanref && branchclean && gitpruneauto'
+alias gitopt='gc && branchcleanref && { branchclean; gitpruneauto; }'
 
 #IMAGE OPTIMIZATION
 #optimize png images using sips, which is built into macOS.
@@ -194,6 +198,9 @@ function dsql() {
     docker exec -it $1 mysql -u root -prootpass
 }
 
+#Node version manager (evaluates node requirements in package.json and automatically switches to the correct node version when you cd into a project directory)
+eval "$(fnm env --use-on-cd)"
+
 #ollama
 #ollama run deepseek-r1:7b
 
@@ -201,6 +208,7 @@ function dsql() {
 if [ -f ~/.zshrcwork ]; then
   source ~/.zshrcwork
 fi
+
 
 #mydiff
 # Diff two files, write a patch, open it in VS Code.
