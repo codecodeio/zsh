@@ -132,25 +132,9 @@ repo() {
     ll
 }
 
-#AI OS
-# open the AI OS dashboard (control center) in VS Code; press ⌘⇧V to preview
-alias aios='code "/Users/$USER/Documents/Development/Git/repos/CONTROL-CENTER.md"'
-# open the personal Claude skills folder in VS Code (each skill = <name>/SKILL.md)
+
+# open the Claude skills folder in VS Code (each skill = <name>/SKILL.md)
 alias skills='code "/Users/$USER/.claude/skills"'
-# open ONE skill's SKILL.md directly, e.g. `skill control-center`; bare `skill` lists them
-skill() {
-  local dir="/Users/$USER/.claude/skills"
-  if [[ -z "$1" ]]; then
-    echo "🚫 Usage: skill <name>  —  available: $(ls "$dir" | tr '\n' ' ')"
-    return 1
-  fi
-  if [[ -f "$dir/$1/SKILL.md" ]]; then
-    code "$dir/$1/SKILL.md"
-  else
-    echo "❌ No skill '$1'  —  available: $(ls "$dir" | tr '\n' ' ')"
-    return 1
-  fi
-}
 
 #GIT OPTIMIZATION
 alias gc='git gc --aggressive'
@@ -225,10 +209,6 @@ if [ -f ~/.zshrcwork ]; then
   source ~/.zshrcwork
 fi
 
-# Source the magdev multi-site helpers (magup/magdown/maglist) if present
-if [ -f ~/Documents/Development/Git/repos/magdevedge/magdev-aliases.zsh ]; then
-  source ~/Documents/Development/Git/repos/magdevedge/magdev-aliases.zsh
-fi
 
 #mydiff
 # Diff two files, write a patch, open it in VS Code.
