@@ -227,3 +227,6 @@ mydiff() {
   fi
 }
 
+#Robinhood strategy lab — `rh <cmd>` (book, report, recent, plan, ...). See repo README.
+[ -f "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh"
+
