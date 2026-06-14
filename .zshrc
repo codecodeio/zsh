@@ -230,3 +230,6 @@ mydiff() {
 #Robinhood strategy lab — `rh <cmd>` (book, report, recent, plan, ...). See repo README.
 [ -f "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh"
 
+#aiguru — portfolio AI-OS kernel; `aig <cmd>` (status, sync, brief, schedule, new, ...). See repo README.
+[ -f "/Users/$USER/Documents/Development/Git/repos/aiguru/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/aiguru/aliases.sh"
+
