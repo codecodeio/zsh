@@ -7,6 +7,9 @@ setopt PROMPT_SUBST
 PROMPT='%(?.%F{green}✅.%F{red}❌)%f %B%F{cyan}%1~%f%b %F{yellow}${vcs_info_msg_0_}%f %# '
 RPROMPT='%*'
 
+#Completion (enables `aig`/`rh` tab-completion; must run before those alias files are sourced below)
+autoload -Uz compinit && compinit
+
 #Shared zshrc config for commands with username
 USER=${"$(id -un)"}
 
