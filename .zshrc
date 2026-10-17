@@ -182,7 +182,7 @@ alias composercreds='cd ~/.composer && ll'
 
 #BREW
 alias b='brew'
-alias bu='brew update && brew upgrade && brew cleanup && claude update && brew doctor' #update brew and all packages, then clean up old versions, upgrade Claude Code, and check for issues
+alias bu='brew update && brew upgrade && brew cleanup && echo "==> Updating Claude Code..." && claude update && brew doctor' #update brew and all packages, then clean up old versions, upgrade Claude Code, and check for issues
 
 #DOCKER
 alias d='docker'
