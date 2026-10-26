@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Scope:** this file loads in every session because every project lives under `~`. It applies **only** when editing the zsh config (`.zshrc`, `.zprofile`) or committing in the home repo. In any other project, ignore it — global preferences live in `~/.claude/CLAUDE.md`.
+
 ## Repository purpose
 
 This repo is the user's `$HOME` directory tracked as a git repo (`git@github.com:codecodeio/zsh.git`) for syncing zsh shell configuration across machines. The `.gitignore` uses an allowlist pattern — `*` is ignored, only `.zshrc`, `.zprofile`, `.gitignore`, and `README.md` are tracked. **Do not add new tracked files** unless you also add a matching `!` allowlist entry to `.gitignore`; otherwise the file will be silently ignored.
