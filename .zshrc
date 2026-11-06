@@ -236,3 +236,6 @@ mydiff() {
 #Gold Simulations ops — `gs <cmd>` (dns, ...). See goldsimulations/ops/README.md.
 [ -f "/Users/$USER/Documents/Development/Git/repos/goldsimulations/ops/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/goldsimulations/ops/aliases.sh"
 
+
+#Gold Simulations database — `gsdb <cmd>` (up, down, reset, drift, status, studio). See goldsimulations/goldsimulations-supabase/CLAUDE.md.
+[ -f "/Users/$USER/Documents/Development/Git/repos/goldsimulations/goldsimulations-supabase/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/goldsimulations/goldsimulations-supabase/aliases.sh"
