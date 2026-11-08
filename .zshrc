@@ -233,6 +233,9 @@ mydiff() {
 #Robinhood strategy lab — `rh <cmd>` (book, report, recent, plan, ...). See repo README.
 [ -f "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/robinhood/aliases.sh"
 
+#House maintenance record — `house <cmd>` (appliances, due, todo, company, log, ...). See house/README.md.
+[ -f "/Users/$USER/Documents/Development/Git/repos/house/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/house/aliases.sh"
+
 #Gold Simulations ops — `gs <cmd>` (dns, ...). See goldsimulations/ops/README.md.
 [ -f "/Users/$USER/Documents/Development/Git/repos/goldsimulations/ops/aliases.sh" ] && source "/Users/$USER/Documents/Development/Git/repos/goldsimulations/ops/aliases.sh"
 
